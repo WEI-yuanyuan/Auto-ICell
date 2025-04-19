@@ -25,11 +25,6 @@ Project Root/
 | ├── calculateCrossCorrelationMap.m
 | ├── getMaxByCentroid.m
 | └── show2d.m
-
-yaml
-
-Copy
-
 ---
 
 ## Usage
@@ -37,7 +32,6 @@ Copy
 1. Place `.tif` images into the corresponding `Sample*` folder.
 2. Run one of the main scripts based on your task:
 
-```matlab
 % RGB-based analysis
 plot_distribution
 
@@ -46,11 +40,13 @@ test2
 
 % HSV + registration
 test2_vBB
-Outputs
+
+## Outputs
 ROI-enhanced images and masks
 Area statistics and intensity distribution plots
 Registered image sequences
-Requirements
+
+## Requirements
 MATLAB R2018a or later
 Image Processing Toolbox
 Optional: mtimesx for fast matrix operations
