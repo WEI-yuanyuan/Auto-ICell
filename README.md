@@ -6,121 +6,55 @@ MATLAB R2018a or later
 Image Processing Toolbox
 Optional: mtimesx for fast matrix operations
 
-# Folder Structure
+## Folder Structure
+
 Project Root/
 |
 ├── RGB-based image analysis/
-|   ├── Output/
-|   │   ├── channel_region.tif
-|   │   └── parameters.mat
-|   ├── Sample frames/
-|   │   └── *.tif              # Input sample frames
-|   ├── plot_distribution.m
-|   ├── rgb_deconvolve.m
-|   └── show2d.m
+| ├── Sample frames/ # Input .tif images
+| ├── Output/ # ROI masks, results
+| ├── plot_distribution.m # Main RGB analysis script
+| ├── rgb_deconvolve.m # RGB color separation
+| └── show2d.m # Image display
 |
 ├── HSV-based image analysis and image register/
-|   ├── Output/
-|   │   ├── Aligned/
-|   │   ├── Segmented/
-|   │   ├── Segmented_Plasma/
-|   │   └── Segmented_RBC/
-|   ├── sample2/
-|   ├── Sample3/
-|   │   └── *.tif              # Timestamped image frames
-|   ├── test2.m
-|   ├── test2_vBB.m
-|   ├── calculateCrossCorrelationMap.m
-|   ├── getMaxByCentroid.m
-|   └── show2d.m
+| ├── Sample3/, sample2/ # Input image sequences
+| ├── Output/ # Aligned & segmented results
+| ├── test2.m # HSV segmentation and analysis
+| ├── test2_vBB.m # Registration + segmentation
+| ├── calculateCrossCorrelationMap.m
+| ├── getMaxByCentroid.m
+| └── show2d.m
+
+yaml
+
+Copy
 
 ---
 
-## Key Features
+## Usage
 
-- RGB-based segmentation and color deconvolution
-- HSV-based plasma and RBC segmentation
-- Image registration using normalized cross-correlation
-- Intensity distribution plotting over time or space
-- Batch processing of `.tif` microscopy images
-- Custom color separation using stain vectors
-
----
-
-## RGB-Based Image Analysis
-
-**Location**: `RGB-based image analysis/`
-
-### Main Script: `plot_distribution.m`
-
-- Performs background correction over all frames
-- Detects the analysis region based on red channel contrast
-- Applies color deconvolution using `rgb_deconvolve.m`
-- Plots and saves spatial intensity distributions of RBC (red) and plasma (blue)
-
-### Supporting Functions
-
-- `rgb_deconvolve.m`: Separates RGB signals into independent stain channels
-- `show2d.m`: Utility to visualize grayscale or magnitude images
-
-### Inputs
-
-- `.tif` image frames in `Sample frames/`
-
-### Outputs
-
-- ROI-enhanced images: `Output/ROI-*.tif`
-- Distribution plots: `Output/Distribution-*.tif`
-- Detected region mask: `Output/channel_region.tif`
-- Background data: `Output/parameters.mat`
-
----
-
-## HSV-Based Image Analysis and Registration
-
-**Location**: `HSV-based image analysis and image register/`
-
-### Main Scripts
-
-#### `test2_vBB.m` (Image Registration and Segmentation)
-
-- Registers image sequence based on S-channel similarity
-- Defines channel region by overlapping top 10 frames
-- Segments RBC and plasma by HSV saturation thresholding
-- Saves segmented frames and logs areas
-
-#### `test2.m` (Segmentation and Intensity Evaluation)
-
-- Converts RGB to grayscale to extract RBC masks
-- Computes normalized red intensity over time
-- Applies color deconvolution on RBC/plasma channels
-- Plots intensity profiles and differential values
-
-### Registration Functions
-
-- `calculateCrossCorrelationMap.m`: Computes cross-correlation map using FFT
-- `getMaxByCentroid.m`: Finds peak offset using centroid of the correlation peak
-
-### Visualization
-
-- `show2d.m`: Displays segmentation and region definition results
-- Saved plots include area curves and RBC/plasma ratio over time
-
-### Outputs
-
-- `Aligned/`: Registered image frames
-- `Segmented_RBC/`, `Segmented_Plasma/`: Highlighted masks
-- `AreaRBCPlasma.fig`, `RatioOfArea.fig`: Area statistics visualizations
-
----
-
-## Example Workflow
-
-1. Place your `.tif` image sequence into `RGB-based image analysis/Sample frames/` or `HSV-based image analysis and image register/Sample3/`
-2. For RGB processing, run:
+1. Place `.tif` images into the corresponding `Sample*` folder.
+2. Run one of the main scripts based on your task:
 
 ```matlab
+% RGB-based analysis
 plot_distribution
 
-# License
+% HSV-based segmentation
+test2
+
+% HSV + registration
+test2_vBB
+Outputs
+ROI-enhanced images and masks
+Area statistics and intensity distribution plots
+Registered image sequences
+Requirements
+MATLAB R2018a or later
+Image Processing Toolbox
+Optional: mtimesx for fast matrix operations
+
+
+## License
 This project is intended for academic and research use. Please contact the authors for permission if you plan to use it for commercial purposes.
