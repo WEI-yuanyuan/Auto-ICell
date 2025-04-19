@@ -1,6 +1,11 @@
 ## Auto-ICell-Matlab-codes
 Auto-ICell: An Open-Source AI-Enhanced Droplet Microfluidics Platform for High-Throughput Single-Cell Analysis
 
+# Requirements
+MATLAB R2018a or later
+Image Processing Toolbox
+Optional: mtimesx for fast matrix operations
+
 # Folder Structure
 Project Root/
 |
