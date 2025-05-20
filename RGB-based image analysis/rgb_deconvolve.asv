@@ -1,0 +1,24 @@
+function hedIm = rgb_deconvolve(rgbIm, color1, color2, color3)
+addpath('mtimesx');
+
+tform = cat(1, color1, color2, color3);
+tform = 255 - tform;
+
+tform_hed2rgb = [0.65, 0.70, 0.29; 0.07, 0.99, 0.11; 0.27, 0.57, 0.78];
+% tform_rgb2hed = inv(tform_hed2rgb);
+
+rgbIm = single(rgbIm);
+rgbIm(rgbIm<1e-6) = 1e-6;
+imSizex = size(rgbIm, 1);
+
+logAdjust = log(1e-6);
+
+adjustedIm = log(rgbIm)/logAdjust;
+adjustedIm = squeeze(reshape(adjustedIm, 1, [], 3));
+
+% hedIm = adjustedIm*tform_rgb2hed;
+hedIm = adjustedIm/tform_hed2rgb;
+% hedIm(hedIm<0)=0;
+hedIm = reshape(hedIm, imSizex, [], 3);
+
+end
