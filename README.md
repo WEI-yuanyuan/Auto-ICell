@@ -1,11 +1,12 @@
 
 # Auto-ICell: An Open-Source AI-Enhanced Droplet Microfluidics Platform for High-Throughput Single-Cell Analysis
 
-Auto-ICell is an open-source tool designed to streamline and enhance single-cell analysis in droplet microfluidic systems using state-of-the-art AI-based segmentation models. This platform leverages the powerful **Segment Anything Model (SAM)** to automatically detect and segment cells or features from noisy microscopic images, facilitating high-throughput workflows.
+Auto-ICell is an open-source tool designed to streamline and enhance single-cell analysis in droplet microfluidic systems using state-of-the-art AI-based segmentation models. This platform leverages the powerful combination of **Segment Anything Model (SAM)** and **Cellpose** to automatically detect and segment cells or features from noisy microscopic images, facilitating high-throughput workflows.
 
 ## 🔍 Features
 
 - ✅ Automatic segmentation of microscopy images using Meta's SAM
+- ✅ Cellpose for cell morphology prior
 - ✅ Bounding box visualization for identified cells or regions
 - ✅ Noise-robust mask generation
 - ✅ Masked region extraction for downstream analysis
